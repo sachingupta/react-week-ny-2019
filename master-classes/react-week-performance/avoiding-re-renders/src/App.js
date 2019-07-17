@@ -33,6 +33,11 @@ class App extends Component {
     this.setState(prevState => {
       prevState.dataList.push(newItem);
       return { dataList: prevState.dataList };
+      /**
+       *      const newList = prevState.dataList.concat(newItem);
+       * return {dataList: newList };
+      return { dataList: prevState.dataList };
+       */
     });
 
     event.target.newItem.value = '';
@@ -58,7 +63,7 @@ class App extends Component {
           <div className="listsWrapper">
             <List items={dataList} />
             {/* <ListSCU items={dataList} /> */}
-            {/* <ListPure items={dataList} /> */}
+            {<ListPure items={dataList} />}
             {/* <ListFunctional items={dataList} /> */}
           </div>
         </main>

@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class ListPure extends Component {
+/**
+ * PureComponents basically do a shouldComponent Update for us and shallowly compare
+ * the props and state objects. The same caveats hold for this:
+ * 1) Don't optimize unless you have to.
+ * 2) Make sure you are disciplined with regard to immutability.
+ */
+class ListPure extends PureComponent {
   render() {
     console.log('rendering ListPure');
 
