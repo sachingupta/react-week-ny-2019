@@ -4,7 +4,7 @@ import ViewportObserver from './ViewportObserver';
 const LazyImage = ({ src }) => (
   <ViewportObserver>
     {(hasBeenInViewport, domRef) => (
-      <img ref={domRef} src={hasBeenInViewport ? src : null} alt="abstract photograph" />
+      <img ref={domRef} src={hasBeenInViewport ? src : null/* you can render loading indicator here*/} alt="abstract photograph" />
     )}
   </ViewportObserver>
 );
