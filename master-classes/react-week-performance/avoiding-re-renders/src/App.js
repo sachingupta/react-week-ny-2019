@@ -39,7 +39,7 @@ class App extends Component {
     });
   }
 
-  handleAddItemSubmit(event) {
+  handleAddItemSubmit = (event) => {
     const newItem = event.target.newItem.value;
     event.preventDefault();
 
