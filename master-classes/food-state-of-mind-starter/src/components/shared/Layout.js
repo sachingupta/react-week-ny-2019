@@ -7,6 +7,3 @@ export const PageContainer = styled.div`
 export const FormContainer = styled.div`
   width: 500px;
 `;
-
-
-
