@@ -31,13 +31,8 @@ class App extends Component {
     event.preventDefault();
 
     this.setState(prevState => {
-      prevState.dataList.push(newItem);
-      return { dataList: prevState.dataList };
-      /**
-       *      const newList = prevState.dataList.concat(newItem);
-       * return {dataList: newList };
-      return { dataList: prevState.dataList };
-       */
+      const newList = prevState.dataList.concat(newItem);
+      return { dataList: newList };
     });
 
     event.target.newItem.value = '';
