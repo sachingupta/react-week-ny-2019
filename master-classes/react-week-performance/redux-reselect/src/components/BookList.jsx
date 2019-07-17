@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { getAuthors } from "../state/bookList";
 
 import List from './List';
 
@@ -18,7 +19,7 @@ class BookList extends Component {
 
 function mapStateToProps(state) {
   return {
-    list: state.bookList.map(item => item.bookTitle),
+    list: getAuthors(state),
   };
 }
 

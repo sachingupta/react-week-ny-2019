@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 export const SET_LIST = 'SET_LIST';
 
 export function setList(list) {
@@ -16,3 +18,19 @@ export default function reducer(state = [], action) {
       return state;
   }
 }
+
+const getBookList = state => state.bookList;
+
+/**
+ * rather than deriving this data in the mapStateToProps of individual components,
+ * we provide a memoized selector. This is more efficient and can help when refactoring.
+ */
+export const getAuthors = createSelector(
+  getBookList,
+  list => list.map(item => item.authorName),
+);
+
+export const getTitles = createSelector(
+  getBookList,
+  list => list.map(item => item.bookTitle),
+);
