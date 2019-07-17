@@ -1,5 +1,22 @@
+import {useContext} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import * as authActions from '../actions/auth';
+import * as authActions from '../redux/actions/auth';
+
+export const LOGIN = '[AUTH] LOGIN';
+export const LOGOUT = '[AUTH] LOGOUT';
+
+export function signIn ({ email, password, name }) {
+  return {
+    type: LOGIN,
+    payload: {email, password, name}
+  }
+}
+
+export function signOut() {
+  return {
+    type: LOGOUT,
+  }
+}
 
 /*
  I don't want to know in my componnets that I am using redux 
@@ -19,3 +36,4 @@ export function useAuth() {
 
   return {currentUser, login, logout}
 }
+

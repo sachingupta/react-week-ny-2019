@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT} from "../actions/auth";
+import {LOGIN, LOGOUT} from "../../hooks/useAuth";
 
 export function authReducer(state = null, action) {
   const {type, payload} = action;
