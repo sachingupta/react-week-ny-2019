@@ -31,10 +31,10 @@ class ViewportObserver extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { render } = this.props;
     const { hasBeenInViewport } = this.state;
 
-    return children(hasBeenInViewport, this.domRef);
+    return render(hasBeenInViewport, this.domRef);
   }
 }
 
