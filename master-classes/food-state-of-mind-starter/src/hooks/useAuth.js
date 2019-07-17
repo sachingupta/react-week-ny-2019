@@ -1,6 +1,4 @@
-import {useContext} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import * as authActions from '../redux/actions/auth';
 
 export const LOGIN = '[AUTH] LOGIN';
 export const LOGOUT = '[AUTH] LOGOUT';
@@ -27,11 +25,11 @@ export function useAuth() {
   const dispatch = useDispatch();
 
   const login = ({email, password, name}) => {
-      dispatch(authActions.login({email, password,name}));
+      dispatch(signIn({email, password,name}));
   };
 
   const logout = () => {
-    dispatch(authActions.logout());
+    dispatch(signOut());
   };
 
   return {currentUser, login, logout}
