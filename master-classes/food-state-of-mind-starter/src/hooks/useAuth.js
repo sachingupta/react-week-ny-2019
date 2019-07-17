@@ -1,4 +1,5 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useContext} from 'react';
+import {AuthContext} from "../providers/AuthContextProvider";
 
 export const LOGIN = '[AUTH] LOGIN';
 export const LOGOUT = '[AUTH] LOGOUT';
@@ -21,17 +22,15 @@ export function signOut() {
  so creating this selector will decouple it.
 */
 export function useAuth() {
-  const currentUser = useSelector(state => state.currentUser);
-  const dispatch = useDispatch();
+  const {state, dispatch} = useContext(AuthContext);
 
   const login = ({email, password, name}) => {
-      dispatch(signIn({email, password,name}));
+    dispatch(signIn({email, password,name}));
   };
 
   const logout = () => {
     dispatch(signOut());
   };
 
-  return {currentUser, login, logout}
+  return {currentUser: state, login, logout }
 }
-
