@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class CreatePage extends React.Component {
 
@@ -36,9 +38,31 @@ render () {
 }
 
 handlePost = () => {
-    // TODO: create post before going back to ListPage
-    console.log(this.state);
-    this.props.history.replace('/')
+    const { description, imageUrl } = this.state
+    this.props.addPost({ description, imageUrl }).then(() => {
+      this.props.history.replace('/');
+    })
+  }  
 }
-}
-export default withRouter(CreatePage)
+
+const CREATE_POST_MUTATION = gql`
+  mutation addPost($description: String!, $imageUrl: String!) {
+    createPost(description: $description, imageUrl: $imageUrl) {
+      id
+      description
+      imageUrl
+    }
+  }
+`;
+
+
+const CreatePageWithMutation = graphql(CREATE_POST_MUTATION, {
+    props: ({mutate}) => ({
+      addPost: ({description, imageUrl}) =>
+        mutate({
+          variables: {description, imageUrl},
+        }),
+    })
+   })(CreatePage);
+   
+   export default withRouter(CreatePageWithMutation);

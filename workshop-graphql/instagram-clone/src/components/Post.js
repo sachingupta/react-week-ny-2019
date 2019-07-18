@@ -1,4 +1,6 @@
 import React from 'react';
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class Post extends React.Component {
   render() {
@@ -22,10 +24,23 @@ class Post extends React.Component {
     )
   }
 
-  handleDelete = () => {
-    // TODO: delete post before reloading posts
-    this.props.refresh()
+  handleDelete = async () => {
+    await this.props.deletePostMutation({variables: {id: this.props.post.id}});
+    this.props.refresh();
   }
+  
 }
 
-export default Post
+const DELETE_POST_MUTATION = gql`
+  mutation deletePost($id: ID!) {
+    deletePost(id: $id) {
+      id
+    }
+  }
+`;
+
+
+const PostWithMutation = graphql(DELETE_POST_MUTATION, 
+    { name: 'deletePostMutation'})(Post);
+  
+  export default PostWithMutation;
