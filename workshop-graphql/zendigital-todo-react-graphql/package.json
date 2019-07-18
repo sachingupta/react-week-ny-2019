@@ -1,0 +1,25 @@
+{
+  "name": "todo-graphql-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-graphql-server db.js",
+    "app": "parcel serve src/index.html",
+    "server": "npm start & npm run app"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "apollo-boost": "0.1.22",
+    "classnames": "2.2.6",
+    "json-graphql-server": "2.1.3",
+    "react": "16.6.3",
+    "react-apollo": "2.3.2",
+    "react-dom": "16.6.3",
+    "todomvc-app-css": "2.1.2"
+  },
+  "devDependencies": {
+    "parcel-bundler": "1.10.3"
+  }
+}
